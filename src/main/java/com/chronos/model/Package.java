@@ -24,12 +24,12 @@ public class Package {
     private long deliveryTime;
     private String assignedRiderId;
 
-    public Package(String id, Priority priority, boolean fragile, long orderTime, long deadline) {
+    public Package(String id, Priority priority, boolean fragile, long deadline) {
         this.id = id;
         this.priority = priority;
         this.fragile = fragile;
-        this.orderTime = orderTime;
-        this.deadline = deadline;
+        this.orderTime = System.currentTimeMillis();
+        this.deadline = System.currentTimeMillis() + (deadline * 24 * 60 * 60 * 1000);
         this.status = Status.PENDING;
         this.pickupTime = -1;
         this.deliveryTime = -1;
